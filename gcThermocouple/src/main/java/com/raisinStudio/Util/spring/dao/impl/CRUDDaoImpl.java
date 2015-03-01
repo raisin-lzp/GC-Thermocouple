@@ -40,7 +40,6 @@ public class CRUDDaoImpl implements CRUDDao {
 	
 	public List<Object> getbyString(String stringData, String columnName,
 			String tableName, Class<?> tempClass) throws DataAccessException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -83,14 +82,12 @@ public class CRUDDaoImpl implements CRUDDao {
 	
 	public void update(Object object, String tableName, Class<?> tempClass)
 			throws DataAccessException {
-		// TODO Auto-generated method stub
 
 	}
 
 	
 	public void deleteById(Integer id, String tableName, Class<?> tempClass)
 			throws DataAccessException {
-		// TODO Auto-generated method stub
 
 	}
 
