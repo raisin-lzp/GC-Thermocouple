@@ -106,7 +106,7 @@ public class CustomerAction {
 
 			} else {
 
-				return customerBO.getMessage();
+				return "error";
 
 			}
 		} catch (Exception e) {
@@ -133,7 +133,7 @@ public class CustomerAction {
 		String verifyCode = String.valueOf(i1) + String.valueOf(i2)
 				+ String.valueOf(i3) + String.valueOf(i4);
 
-		// 2007/12/07ÐÞ¸ÄÎªÐÂ°æ±¾Ð£ÑéÂë by lance
+		// 2007/12/07ï¿½Þ¸ï¿½Îªï¿½Â°æ±¾Ð£ï¿½ï¿½ï¿½ï¿½ by lance
 		BufferedImage image4 = null;
 		if (verifyCode.length() >= 6) {
 			image4 = new BufferedImage(80, 20, BufferedImage.TYPE_INT_RGB);
@@ -150,15 +150,15 @@ public class CustomerAction {
 		g.setColor(new Color(0, 0, 255));
 
 		// g.drawString(verifyCode, 10, 10);
-		// Éú³É¸ÉÈÅ
+		// ï¿½ï¿½ï¿½É¸ï¿½ï¿½ï¿½
 		Color[] c = { Color.BLACK, Color.BLUE, Color.RED };
-		// ¶¨Òå×ÖÌå
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		// String[] font = {"Verdana", "Microsoft Sans Serif", "Comic Sans MS",
-		// "Arial", "ËÎÌå"};
-		// Ëæ»úÊä³öÔëµã
+		// "Arial", "ï¿½ï¿½ï¿½ï¿½"};
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Random rand = new Random();
 
-		// »­Í¼Æ¬µÄ±³¾°ÔëÒôÏß
+		// ï¿½ï¿½Í¼Æ¬ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < 5; i++) {
 			int x1 = rand.nextInt(60);
 			int x2 = rand.nextInt(60);
@@ -172,7 +172,7 @@ public class CustomerAction {
 			g.setColor(c[z]);
 			g.drawLine(x1, y1, x2, y2);
 		}
-		// ±³¾°Ôëµã
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < 70; i++) {
 			int x = rand.nextInt(60);
 			if (verifyCode.length() >= 6) {
@@ -185,7 +185,7 @@ public class CustomerAction {
 		}
 
 		int wi = 0;
-		// Êä³ö²»Í¬×ÖÌåºÍÑÕÉ«µÄÑéÖ¤Âë×Ö·ûchar[] ac = verifyCode.toCharArray();
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Ö·ï¿½char[] ac = verifyCode.toCharArray();
 		int xd = 1;
 		for (int i = 0; i < verifyCode.length(); i++) {
 			String a = verifyCode.substring(i, i + 1);
@@ -262,13 +262,13 @@ public class CustomerAction {
 			tempcustomer.setEmail(customerForm.getEmail());
 
 			if (customerBO.addSubmit(tempcustomer)) {
-				map.put("success", customerBO.getMessage());
+				map.put("success", "success");
 				printWriter.write(JSONObject.fromObject(map).toString());
 				printWriter.flush();
 				printWriter.close();
 				return;
 			} else {
-				map.put("error", customerBO.getMessage());
+				map.put("error", "error");
 				printWriter.write(JSONObject.fromObject(map).toString());
 				printWriter.flush();
 				printWriter.close();
@@ -279,462 +279,5 @@ public class CustomerAction {
 			throw e;
 		}
 	}
-
-	//
-	// public String modSubmit() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "nocustomer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// customer.setFullname(customerForm.getFullname());
-	// customerForm.setFullname(null);
-	//
-	// customer.setEmail(customerForm.getEmail());
-	// customerForm.setEmail(null);
-	//
-	// customer.setMobile(customerForm.getMobile());
-	// customerForm.setMobile(null);
-	//
-	// customer.setFax(customerForm.getFax());
-	// customerForm.setFax(null);
-	//
-	// customer.setCountry(customerForm.getCountry());
-	// customerForm.setCountry(null);
-	//
-	// customer.setCity(customerForm.getCity());
-	// customerForm.setCity(null);
-	//
-	// customer.setAddress(customerForm.getAddress());
-	// customerForm.setAddress(null);
-	//
-	// customer.setUpdatetime(new Date());
-	//
-	// if (customerBO.modSubmit(customer, adminObject)) {
-	// map.put("succes", "success");
-	//
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	// } else {
-	// map.put("error", customerBO.getMessage());
-	//
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String passwordmodSubmit() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "nocustomer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// if (!customer.getPassword().equals(customerForm.getPassword())) {
-	// map.put("error", "oldpasswordwrong");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// customer.setPassword(customerForm.getNewpassword());
-	// customerForm.setPassword(null);
-	// customerForm.setNewpassword(null);
-	//
-	// customer.setModpwdtime(new Date());
-	//
-	// if (customerBO.modSubmit(customer, adminObject)) {
-	// map.put("success", "success");
-	//
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// sessionBean.setAdminObject(null);
-	// sessionBean.setControlBean(null);
-	// return SUCCESS;
-	// } else {
-	// map.put("error", customerBO.getMessage());
-	//
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String menuQuery() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "no_customer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// if (customerForm.getMenutype().equals("Account_Infomation")) {
-	//
-	// map.put("fullnametxt", customer.getFullname());
-	// map.put("emailtxt", customer.getEmail());
-	// map.put("mobiletxt", customer.getMobile());
-	// map.put("faxtxt", customer.getFax());
-	// map.put("countrytxt", customer.getCountry());
-	// map.put("citytxt", customer.getCity());
-	// map.put("adresstxt", customer.getAddress());
-	//
-	// customerForm.setMenutype(null);
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	//
-	// } else if (customerForm.getMenutype().equals("My_Order")) {
-	//
-	// List<Order> orderList = customerBO
-	// .getOrdersByCustomerId(customer.getUserid());
-	// Map<String, Object> listMap = new HashMap<String, Object>();
-	// Map<String, Object> applistMap = new HashMap<String, Object>();
-	//
-	// listMap.put("orderlist", orderList);
-	//
-	// for (Order i : orderList) {
-	// List<productapp> tempproductapplist = customerBO
-	// .getAppListByAppidsStr(i.getAppids());
-	// Map<String, Object> applistListMap = new HashMap<String, Object>();
-	//
-	// for (productapp j : tempproductapplist) {
-	// if (j != null) {
-	// applistListMap.put(j.getAppid().toString(),
-	// j.getName() + "," + j.getPrice().toString()
-	// + "," + j.getScode() + ","
-	// + j.getApptype().toString());
-	// }
-	// }
-	//
-	// applistMap.put(i.getOrderid().toString() + "apps",
-	// applistListMap);
-	// }
-	//
-	// listMap.put("applist", applistMap);
-	//
-	// customerForm.setMenutype(null);
-	// jo = JSONObject.fromObject(listMap);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	//
-	// }
-	//
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// return ERROR;
-	// }
-	//
-	// public String getbackpasswordSubmit() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (isSessionFlag()) {
-	// map.put("error", "alreadylogin");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(customerForm.getUsername());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "no_customer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	// Customer customer = tempcustomers.get(0);
-	//
-	// if (!customer.getEmail().equals(customerForm.getEmail())) {
-	// map.put("error", "notmatch");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	// try {
-	// MailSenderInfo mailInfo = new MailSenderInfo();
-	// mailInfo.setMailServerHost("192.168.11.107");
-	// mailInfo.setMailServerPort("25");
-	// mailInfo.setValidate(true);
-	// mailInfo.setUserName("123");
-	// mailInfo.setPassword("111111a");
-	// mailInfo.setFromAddress("123@127.0.0.1");
-	// mailInfo.setToAddress("ledaer@126.com");
-	// mailInfo.setSubject("SymbolBox get back pw");
-	// mailInfo.setContent("the url,no reply");
-	//
-	// SimpleMailSender sms = new SimpleMailSender();
-	// sms.sendTextMail(mailInfo);
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	//
-	// map.put("success", "success");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String addcartSubmit() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "no_customer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// Integer tempappid = customerForm.getAddtocartappid();
-	//
-	// if (tempappid == null) {
-	// map.put("error", "noappid");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// if (!customerBO.addAppToCart(customer.getUserid(), tempappid)) {
-	// map.put("error", customerBO.getMessage());
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// map.put("success", "success");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String removecartSubmit() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "no_customer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// Integer tempappid = customerForm.getRemovefromcartappid();
-	//
-	// if (tempappid == null) {
-	// map.put("error", "noappid");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// if (!customerBO.removeAppFromCart(customer.getUserid(), tempappid)) {
-	// map.put("error", customerBO.getMessage());
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// map.put("success", "success");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String cartlistQuery() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// Map<String, String> map = new HashMap<String, String>();
-	//
-	// JSONObject jo = null;
-	//
-	// if (!isSessionFlag()) {
-	// map.put("error", "out_time");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// map.put("error", "no_customer");
-	// jo = JSONObject.fromObject(map);
-	// customerForm.setResult(jo.toString());
-	// return ERROR;
-	// }
-	//
-	// Customer customer = tempcustomers.get(0);
-	//
-	// List<productapp> tempAppList = customerBO
-	// .getAppsFromCartByCustomerID(customer.getUserid());
-	//
-	// Map<String, List<productapp>> mapList = new HashMap<String,
-	// List<productapp>>();
-	//
-	// mapList.put("success", tempAppList);
-	// jo = JSONObject.fromObject(mapList);
-	// customerForm.setResult(jo.toString());
-	// return SUCCESS;
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
-	//
-	// public String orderMake() throws UIException {
-	// try {
-	// this.getSession();
-	//
-	// if (!isSessionFlag()) {
-	// return TIMEOUT;
-	// }
-	//
-	// List<Customer> tempcustomers = customerBO
-	// .getCustomersbyUserName(adminObject.getAdminName());
-	//
-	// if (tempcustomers.size() == 0) {
-	// return TIMEOUT;
-	// }
-	//
-	// String tempAppids = customerForm.getAppids();
-	//
-	// if (tempAppids == null || tempAppids.equals("")) {
-	// return ERROR;
-	// }
-	//
-	// List<productapp> tempAppList = customerBO
-	// .getAppListByAppidsStr(tempAppids);
-	//
-	// if (tempAppList.size() == 0) {
-	// return ERROR;
-	// }
-	//
-	// customerForm.setAppList(tempAppList);
-	//
-	// return setProcessResult(customerForm, "info",
-	// customerBO.getMessage(), BACKINPUT, SUCCESS);
-	// } catch (Exception e) {
-	// throw new UIException(e, this.getClass());
-	// }
-	// }
 
 }

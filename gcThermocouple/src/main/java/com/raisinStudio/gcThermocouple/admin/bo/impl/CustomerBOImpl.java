@@ -16,7 +16,6 @@ import com.raisinStudio.gcThermocouple.admin.po.Customer;
 @Transactional
 public class CustomerBOImpl implements CustomerBO {
 
-	private String message;
 
 	@Autowired
 	private CustomerDAO customerDAO;
@@ -24,13 +23,6 @@ public class CustomerBOImpl implements CustomerBO {
 	@Autowired
 	private CRUDDao cRUDDao;
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 	public CustomerDAO getCustomerDAO() {
 		return customerDAO;
@@ -62,7 +54,6 @@ public class CustomerBOImpl implements CustomerBO {
 					.getUsername());
 
 			if (tempCustomers.size() != 0) {
-				setMessage("username");
 				return false;
 			}
 
@@ -77,10 +68,8 @@ public class CustomerBOImpl implements CustomerBO {
 			cRUDDao.save(customer,"t_user_info",Customer.class);
 
 		} catch (Exception e) {
-			this.setMessage("error");
 			throw e;
 		}
-		this.setMessage("success");
 		return true;
 	}
 
@@ -89,7 +78,6 @@ public class CustomerBOImpl implements CustomerBO {
 			Customer tempCustomer = getCustomer(customer.getUserid());
 
 			if (tempCustomer == null) {
-				setMessage("nocustomer");
 				return false;
 			}
 
@@ -99,7 +87,6 @@ public class CustomerBOImpl implements CustomerBO {
 		} catch (Exception e) {
 			throw e;
 		}
-		this.setMessage("success");
 		return true;
 	}
 
@@ -118,18 +105,14 @@ public class CustomerBOImpl implements CustomerBO {
 			List<Customer> tempCustomers = this.getCustomersbyUserName(customer
 					.getUsername());
 			if (tempCustomers.size() == 0) {
-				this.setMessage("nocustomer");
 				return false;
 			}
 			if (tempCustomers.get(0).getStatus().intValue() != 1) {
-				this.setMessage("notnormalstatus");
 				return false;
 			}
 			if (strPassword.equals(tempCustomers.get(0).getPassword())) {
-				this.setMessage("success");
 				return true;
 			} else {
-				this.setMessage("wrongpassword");
 				return false;
 			}
 		} catch (Exception e) {

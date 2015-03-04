@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapAndBean {
-	public static Object transMap2Bean(Map<String, Object> map,
+	public static Object transMap2BeanUseUpperCase(Map<String, Object> map,
 			Class<?> tempClass) {
 
 		try {
@@ -22,6 +22,34 @@ public class MapAndBean {
 
 			for (PropertyDescriptor property : propertyDescriptors) {
 				String key = property.getName().toUpperCase();
+
+				if (map.containsKey(key)) {
+					Object value = map.get(key);
+					Method setter = property.getWriteMethod();
+					setter.invoke(obj, value);
+				}
+
+			}
+			return obj;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return null;
+		}
+
+	}
+	
+	public static Object transMap2Bean(Map<String, Object> map,
+			Class<?> tempClass) {
+
+		try {
+			Object obj = tempClass.newInstance();
+			
+			BeanInfo beanInfo = Introspector.getBeanInfo(tempClass);
+			PropertyDescriptor[] propertyDescriptors = beanInfo
+					.getPropertyDescriptors();
+
+			for (PropertyDescriptor property : propertyDescriptors) {
+				String key = property.getName();
 
 				if (map.containsKey(key)) {
 					Object value = map.get(key);
@@ -60,9 +88,7 @@ public class MapAndBean {
 			for (PropertyDescriptor property : propertyDescriptors) {
 				String key = property.getName();
 
-				// 过滤class属性
 				if (!key.equals("class")) {
-					// 得到property对应的getter方法
 					Method getter = property.getReadMethod();
 					Object value = getter.invoke(obj);
 

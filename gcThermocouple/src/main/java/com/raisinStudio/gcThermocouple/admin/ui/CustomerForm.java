@@ -3,7 +3,6 @@ package com.raisinStudio.gcThermocouple.admin.ui;
 public class CustomerForm {
 
 	public CustomerForm() {
-		super();
 	}
 
 	private java.lang.Integer userid;

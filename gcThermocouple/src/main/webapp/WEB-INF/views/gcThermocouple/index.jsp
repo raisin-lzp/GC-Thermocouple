@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div
-				style="float: right; max-width: 400px; background-color: #2A51CD; padding-left: 20px; padding-right: 26px; padding-top: 10px;">
+				style="float: right; max-width: 400px; background-color: #2A51CD; padding-left: 20px; padding-right: 26px; padding-top: 10px;padding-bottom: 20px;">
 				<div
 					style="background-image: url(/images/job.jpg); cursor: auto; width: 354px; height: 205px; margin-left: 0px; margin-right: 0px; margin-top: 10px;"
 					class="classBlock"></div>

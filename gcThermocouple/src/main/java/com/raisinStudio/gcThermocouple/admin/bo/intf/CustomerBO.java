@@ -10,7 +10,6 @@ import com.raisinStudio.gcThermocouple.admin.po.Customer;
 
 public interface CustomerBO {
 
-    String getMessage();
 
     List<Customer> getAll() throws Exception;
 

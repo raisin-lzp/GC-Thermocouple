@@ -10,6 +10,9 @@ public interface CRUDDao {
 
 	Object getById(java.lang.Integer id, String tableName, Class<?> tempClass)
 			throws DataAccessException;
+	
+	Object getById(java.lang.Long id, String tableName, Class<?> tempClass)
+			throws DataAccessException;
 
 	List<Object> getbyString(String stringData, String columnName,
 			String tableName, Class<?> tempClass) throws DataAccessException;

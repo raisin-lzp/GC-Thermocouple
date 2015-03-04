@@ -36,6 +36,13 @@ public class CRUDDaoImpl implements CRUDDao {
 		return MapAndBean.transMap2Bean(jdbcTemplate.queryForMap(sql, id),
 				tempClass);
 	}
+	
+	public Object getById(Long id, String tableName, Class<?> tempClass)
+			throws DataAccessException {
+		String sql = "SELECT * From " + tableName + " where USERID=?";
+		return MapAndBean.transMap2Bean(jdbcTemplate.queryForMap(sql, id),
+				tempClass);
+	}
 
 	
 	public List<Object> getbyString(String stringData, String columnName,

@@ -1,23 +1,9 @@
-/*
- * Copyright (c) 2012, Asiainfo-Linkage. All rights reserved.<br>
- * Asiainfo-Linkage PROPRIETARY/CONFIDENTIAL. Use is subject to license terms. 
- */
 package com.raisinStudio.gcThermocouple.admin.po;
 
 import java.io.Serializable;
 
 /**
- * <p>
- * <b>版权：</b>Copyright (c) 2014 松果科技.<br>
- * <b>工程：</b>OnlineShop<br>
- * <b>文件：</b>Customer.java<br>
- * <b>创建时间：</b>2014-08-14 17:34:42<br>
- * <p>
- * <b>Customer PO.</b><br>
- * </p>
- * 
  * @author lezp
- * @since 1.0.0
  */
 @SuppressWarnings("serial")
 public class Customer implements Serializable {
