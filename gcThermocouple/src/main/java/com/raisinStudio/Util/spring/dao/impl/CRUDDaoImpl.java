@@ -21,7 +21,6 @@ public class CRUDDaoImpl implements CRUDDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@SuppressWarnings("unchecked")
-	
 	public List<Object> getAll(String tableName, Class<?> tempClass)
 			throws DataAccessException {
 		String sql = "SELECT * From " + tableName;
@@ -29,28 +28,27 @@ public class CRUDDaoImpl implements CRUDDao {
 				tempClass);
 	}
 
-	
-	public Object getById(Integer id, String tableName, Class<?> tempClass)
-			throws DataAccessException {
-		String sql = "SELECT * From " + tableName + " where USERID=?";
-		return MapAndBean.transMap2Bean(jdbcTemplate.queryForMap(sql, id),
-				tempClass);
-	}
-	
-	public Object getById(Long id, String tableName, Class<?> tempClass)
-			throws DataAccessException {
-		String sql = "SELECT * From " + tableName + " where USERID=?";
+	public Object getById(Integer id, String tableName, String idName,
+			Class<?> tempClass) throws DataAccessException {
+		String sql = "SELECT * From " + tableName + " where " + idName + "=?";
 		return MapAndBean.transMap2Bean(jdbcTemplate.queryForMap(sql, id),
 				tempClass);
 	}
 
-	
-	public List<Object> getbyString(String stringData, String columnName,
-			String tableName, Class<?> tempClass) throws DataAccessException {
-		return null;
+	public Object getById(Long id, String tableName, String idName,
+			Class<?> tempClass) throws DataAccessException {
+		String sql = "SELECT * From " + tableName + " where " + idName + "=?";
+		return MapAndBean.transMap2Bean(jdbcTemplate.queryForMap(sql, id),
+				tempClass);
 	}
 
-	
+	@SuppressWarnings("unchecked")
+	public List<Object> getbySQL(String sql, Class<?> tempClass)
+			throws DataAccessException {
+		return MapAndBean.transMapList2BeanList(jdbcTemplate.queryForList(sql),
+				tempClass);
+	}
+
 	public void save(Object object, String tableName, Class<?> tempClass)
 			throws DataAccessException {
 
@@ -63,9 +61,9 @@ public class CRUDDaoImpl implements CRUDDao {
 					.getPropertyDescriptors();
 
 			for (PropertyDescriptor property : propertyDescriptors) {
-				
+
 				String key = property.getName().toUpperCase();
-				if(key.equalsIgnoreCase("CLASS")){
+				if (key.equalsIgnoreCase("CLASS")) {
 					continue;
 				}
 				columnsString.append(key + ",");
@@ -77,22 +75,22 @@ public class CRUDDaoImpl implements CRUDDao {
 			System.out.println("transBean2Map Error " + e);
 		}
 
-		String sql = "INSERT INTO " + tableName + "("
+		String sql = "INSERT INTO "
+				+ tableName
+				+ "("
 				+ columnsString.substring(0, columnsString.length() - 1)
 				+ ") VALUES("
-				+ columnsMarkString.substring(0, columnsMarkString.length() - 1)
-				+ ")";
-		jdbcTemplate.update(sql,columnsObjectList.toArray());
+				+ columnsMarkString
+						.substring(0, columnsMarkString.length() - 1) + ")";
+		jdbcTemplate.update(sql, columnsObjectList.toArray());
 
 	}
 
-	
 	public void update(Object object, String tableName, Class<?> tempClass)
 			throws DataAccessException {
 
 	}
 
-	
 	public void deleteById(Integer id, String tableName, Class<?> tempClass)
 			throws DataAccessException {
 

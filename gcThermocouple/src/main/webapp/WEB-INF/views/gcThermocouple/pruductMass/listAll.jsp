@@ -25,48 +25,50 @@
 	</div>
 
 
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding-top: 20px;">
+		<!-- 
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="breadcrumb">
 					<li><a href="#">产品列表</a> <span class="divider"></span></li>
-					<!-- 
+
 					<li><a href="#">类目</a> <span class="divider"></span></li>
-					<li class="active">主题</li> -->
+					<li class="active">主题</li> 
 				</ul>
 			</div>
 		</div>
+		-->
 		<div class="row">
 			<div class="col-md-2">
 				<div class="panel-group" id="accordion-773609">
-					<c:forEach items="${typeMap}" var="typeF">
-						<c:out value="${typeF.key}" />
-						<c:out value="${typeF.value.typeFId}" />
-						<c:forEach items="${typeF.value}" var="typeS">
-							<c:out value="${typeS.key}" />
-						</c:forEach>
-
+					<c:forEach items="${typeFList}" var="typeF">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<a class="accordion-toggle" data-toggle="collapse"
 									data-parent="#accordion-773609"
-									href="#accordion-element-<c:out value="${typeF.value.typeFId}" />"><c:out
-										value="${typeF.key}" /></a>
+									href="#accordion-element-<c:out value="${typeF.typeID}" />"><c:out
+										value="${typeF.name}" /></a>
 							</div>
-							<div
-								id="accordion-element-<c:out value="${typeF.value.typeFId}" />"
+							<div id="accordion-element-<c:out value="${typeF.typeID}" />"
 								class="panel-collapse collapse">
-								<c:forEach items="${typeF.value}" var="typeS">
+								<c:forEach items="${typeSMap.get(typeF.typeID)}" var="typeS">
 									<div class="panel-body">
 										<a
-											href="/productMass/typeF/<c:out value="${typeS.value.typeID}" />"><c:out
-												value="${typeS.key}" /></a>
+											href="/productMass/typeS/id/<c:out value="${typeS.typeID}" />"><c:out
+												value="${typeS.name}" /></a>
 									</div>
 								</c:forEach>
+								<div class="panel-body text-center">
+									<a
+										href="/productMass/typeF/id/<c:out value="${typeF.typeID}" />">查看更多…<!--<c:out
+											value="${typeF.typeID}" />-->
+									</a>
+								</div>
 
 							</div>
 						</div>
 					</c:forEach>
+					<!-- 
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<a class="accordion-toggle" data-toggle="collapse"
@@ -76,76 +78,51 @@
 						<div id="accordion-element-360096" class="panel-collapse collapse">
 							<div class="panel-body">功能块...</div>
 						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<a class="accordion-toggle collapsed" data-toggle="collapse"
-								data-parent="#accordion-773609" href="#accordion-element-674542">选项卡
-								#2</a>
-						</div>
-						<div id="accordion-element-674542" class="panel-collapse collapse">
-							<div class="panel-body">功能块...</div>
-						</div>
-					</div>
+					</div> -->
+
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-10">
 				<div class="row">
-					<div class="col-md-4">
-						<div class="media">
-							<a class="pull-left" href="#"><img class="media-object"
-								src="img/a_002.jpg" alt='' /></a>
-							<div class="media-body">
-								<h4 class="media-heading">嵌入媒体标题</h4>
-								请尽量使
+					<div class="col-md-7">
+						<div class="page-header" style="margin-top: 20px;">
+							<h1>
+								产品列表 <small>按产品手册分类</small>
+							</h1>
+						</div>
+						<c:forEach items="${typeFList}" var="typeF">
+							<div>
+								<h2>
+									<c:out value="${typeF.name}" />
+								</h2>
+								<h6>
+									<small><c:out value="${typeF.description}" /></small>
+								</h6>
+								<p>
+									<c:forEach items="${typeSMap.get(typeF.typeID)}" var="typeS">
+										<a
+											href="/productMass/typeS/id/<c:out value="${typeS.typeID}" />"><c:out
+												value="${typeS.name}" /></a>|
+									</c:forEach>
+									<a
+										href="/productMass/typeF/id/<c:out value="${typeF.typeID}" />">查看更多
+										»</a>
+								</p>
 							</div>
+						</c:forEach>
+					</div>
+					<div class="col-md-5">
+						<div class="jumbotron">
+							<h1>特殊产品</h1>
+							<p>本公司除去量产产品之外，还针对特别用户进行产品的定制。</p>
+							<p>
+								详情请看：<a href="#">历年案例</a>
+							</p>
+							<p>
+								<a class="btn btn-primary btn-large" href="#">非标准定制 »</a>
+							</p>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="media">
-							<a class="pull-left" href="#"><img class="media-object"
-								src="img/a_002.jpg" alt='' /></a>
-							<div class="media-body">
-								<h4 class="media-heading">嵌入媒体标题</h4>
-								请尽量使用HTML
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="media">
-							<a class="pull-left" href="#"><img class="media-object"
-								src="img/a_002.jpg" alt='' /></a>
-							<div class="media-body">
-								<h4 class="media-heading">嵌入媒体标题</h4>
-								请尽量使用
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="pagination">
-							<li><a href="#">上一页</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">下一页</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="jumbotron">
-					<h1>公司概况：</h1>
-					<p>本公司除去量产产品之外，还针对特别用户进行产品的特别定制。</p>
-					<p>
-						详情请看：<a href="#">历年案例</a>
-					</p>
-					<p>
-						<a class="btn btn-primary btn-large" href="#">非标准定制 »</a>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -155,7 +132,5 @@
 	<!-- /container -->
 	<%@include file="/WEB-INF/views/gcThermocouple/footer.jsp"%>
 	<%@include file="/WEB-INF/views/gcThermocouple/jslink.jsp"%>
-
-
 </body>
 </html>

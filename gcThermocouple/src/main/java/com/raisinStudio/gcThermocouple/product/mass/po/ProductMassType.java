@@ -13,6 +13,10 @@ public class ProductMassType {
 
 	private java.lang.String name;
 
+	private java.lang.String pictureSmallUrl;
+
+	private java.lang.String pictureBigUrl;
+
 	public java.lang.Long getTypeID() {
 		return typeID;
 	}
@@ -60,5 +64,22 @@ public class ProductMassType {
 	public void setName(java.lang.String name) {
 		this.name = name;
 	}
+
+	public java.lang.String getPictureSmallUrl() {
+		return pictureSmallUrl;
+	}
+
+	public void setPictureSmallUrl(java.lang.String pictureSmallUrl) {
+		this.pictureSmallUrl = pictureSmallUrl;
+	}
+
+	public java.lang.String getPictureBigUrl() {
+		return pictureBigUrl;
+	}
+
+	public void setPictureBigUrl(java.lang.String pictureBigUrl) {
+		this.pictureBigUrl = pictureBigUrl;
+	}
+	
 
 }

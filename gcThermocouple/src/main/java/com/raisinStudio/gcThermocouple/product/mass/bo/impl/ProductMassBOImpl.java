@@ -26,7 +26,7 @@ public class ProductMassBOImpl implements ProductMassBO {
 			return null;
 		}
 		return (ProductMass) cRUDDao.getById(productID, "t_product_mass",
-				ProductMass.class);
+				"productID", ProductMass.class);
 	}
 
 	public List<ProductMass> getAllByLevelAndPageNumber(Integer level,

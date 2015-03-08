@@ -22,7 +22,7 @@ public class ProductMassPartnumberFormatBOImpl implements
 			return null;
 		}
 		return (ProductMassPartnumberFormat) cRUDDao.getById(partNumberID,
-				"t_product_mass_partnumber_format",
+				"t_product_mass_partnumber_format", "partNumberID",
 				ProductMassPartnumberFormat.class);
 	}
 
