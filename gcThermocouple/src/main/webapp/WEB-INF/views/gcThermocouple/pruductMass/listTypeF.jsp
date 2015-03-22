@@ -38,35 +38,35 @@
 		</div>
 		<div class="row">
 			<div class="col-md-2">
-					<div class="panel-group" id="accordion-773609">
-						<c:forEach items="${typeFList}" var="typeF">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<a class="accordion-toggle" data-toggle="collapse"
-										data-parent="#accordion-773609"
-										href="#accordion-element-<c:out value="${typeF.typeID}" />"><c:out
-											value="${typeF.name}" /></a>
-								</div>
-								<div id="accordion-element-<c:out value="${typeF.typeID}" />"
-									class="panel-collapse collapse">
-									<c:forEach items="${typeSMap.get(typeF.typeID)}" var="typeS">
-										<div class="panel-body">
-											<a
-												href="/productMass/typeS/id/<c:out value="${typeS.typeID}" />"><c:out
-													value="${typeS.name}" /></a>
-										</div>
-									</c:forEach>
-									<div class="panel-body text-center">
-										<a
-											href="/productMass/typeF/id/<c:out value="${typeF.typeID}" />">查看更多…<!--<c:out
-											value="${typeF.typeID}" />-->
-										</a>
-									</div>
-
-								</div>
+				<div class="panel-group" id="accordion-773609">
+					<c:forEach items="${typeFList}" var="typeF">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion-773609"
+									href="#accordion-element-<c:out value="${typeF.typeID}" />"><c:out
+										value="${typeF.name}" /></a>
 							</div>
-						</c:forEach>
-					</div>
+							<div id="accordion-element-<c:out value="${typeF.typeID}" />"
+								class="panel-collapse collapse">
+								<c:forEach items="${typeSMap.get(typeF.typeID)}" var="typeS">
+									<div class="panel-body">
+										<a
+											href="/productMass/typeS/id/<c:out value="${typeS.typeID}" />"><c:out
+												value="${typeS.name}" /></a>
+									</div>
+								</c:forEach>
+								<div class="panel-body text-center">
+									<a
+										href="/productMass/typeF/id/<c:out value="${typeF.typeID}" />">查看更多…<!--<c:out
+											value="${typeF.typeID}" />-->
+									</a>
+								</div>
+
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			<div class="col-md-10">
 
@@ -81,25 +81,33 @@
 
 				<c:forEach items="${typeSMap.get(thisPageType.typeID)}"
 					var="thisPageTypeS">
-					<div class="col-sm-6 col-md-3">
-						<div class="thumbnail">
+					<div class="col-sm-12 col-md-6">
+
+						<div class="col-md-3">
+							<!-- <div class="thumbnail"></div> -->
 							<img
-								src="/images/productMass/type/typeId_<c:out value="${thisPageTypeS.typeID}" />.jpg"
+								src="/images/productMass/type/typeId_<c:out value="${thisPageTypeS.typeID}" />.gif"
 								alt="<c:out
-									value="${thisPageTypeS.name}" />">
-							<div class="caption">
-								<h3>
-									<c:out value="${thisPageTypeS.name}" />
-								</h3>
-								<p>
-									<c:out value="${thisPageTypeS.description}" />
-								</p>
-								<p>
-									<a
-										href="/productMass/typeS/id/<c:out value="${thisPageTypeS.typeID}" />"
-										class="btn btn-primary" role="button">查看</a>
-								</p>
-							</div>
+									value="${thisPageTypeS.name}" />"
+								style="border: 1px solid;">
+
+						</div>
+						<div class="col-md-8">
+							<h4 style="">
+								<a
+									href="/productMass/typeS/id/<c:out value="${thisPageTypeS.typeID}" />"><c:out
+										value="${thisPageTypeS.name}" /></a>
+							</h4>
+							<p>
+								<c:out value="${thisPageTypeS.description}" />
+							</p>
+
+							<p>
+								<a
+									href="/productMass/typeS/id/<c:out value="${thisPageTypeS.typeID}" />"
+									class="btn btn-primary" role="button">查看</a>
+							</p>
+
 						</div>
 					</div>
 				</c:forEach>

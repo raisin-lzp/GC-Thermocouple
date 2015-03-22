@@ -12,4 +12,7 @@ public interface ProductMassBO {
 			Integer tempPageNumber, Integer tempNnumberPerPage)
 			throws Exception;
 
+	List<ProductMass> getAllByLevel(Integer level, Long typeId)
+			throws Exception;
+
 }

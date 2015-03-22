@@ -3,7 +3,7 @@
 
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
-	href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	href="/css/bootstrap.min.css">
 
 <link href="/css/cover/index.css" rel="stylesheet">
 

@@ -12,4 +12,7 @@ public interface ProductMassDAO {
 			Integer tempPageNumber, Integer tempNnumberPerPage)
 			throws DataAccessException;
 
+	List<ProductMass> getAllByLevel(Integer level, Long typeId)
+			throws DataAccessException;
+
 }

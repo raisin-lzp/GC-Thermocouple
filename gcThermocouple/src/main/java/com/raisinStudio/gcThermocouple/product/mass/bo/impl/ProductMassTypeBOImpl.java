@@ -20,13 +20,13 @@ import com.raisinStudio.gcThermocouple.product.mass.po.ProductMassType;
 public class ProductMassTypeBOImpl implements ProductMassTypeBO {
 
 	@Autowired
-	private ProductMassTypeDao ProductMassTypeDao;
+	private ProductMassTypeDao productMassTypeDao;
 
 	@Autowired
 	private CRUDDao cRUDDao;
 
 	public List<ProductMassType> getAllOrderByID() throws Exception {
-		return ProductMassTypeDao.getAllOrderByID();
+		return productMassTypeDao.getAllOrderByID();
 	}
 
 	public boolean setModelTypeTree(Model model) throws Exception {

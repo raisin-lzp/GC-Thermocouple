@@ -36,4 +36,9 @@ public class ProductMassBOImpl implements ProductMassBO {
 				tempPageNumber, tempNnumberPerPage);
 	}
 
+	public List<ProductMass> getAllByLevel(Integer level, Long typeId)
+			throws Exception {
+		return productMassDAO.getAllByLevel(level, typeId);
+	}
+
 }

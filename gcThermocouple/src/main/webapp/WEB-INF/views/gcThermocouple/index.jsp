@@ -29,7 +29,7 @@
 
 	<div class="container-fluid" style="max-width: 1000px;">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-sm-12 col-md-6">
 				<div class="row">
 					<h2 style="color: #000000; font-family: 微软雅黑;">
 						<font style="border-bottom: #6896EA solid 2px; color: #4B5C54;">主营产品</font>
@@ -53,30 +53,30 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6"
+			<div class="col-sm-12 col-md-6"
 				style="max-width: 400px; background-color: #2A51CD; padding-left: 20px; padding-right: 26px; padding-top: 10px; padding-bottom: 20px;">
 				<div
-					style="background-image: url(/images/job.jpg); cursor: auto; width: 354px; height: 205px; margin-left: 0px; margin-right: 0px; margin-top: 10px;"
+					style="background-image: url(/images/job_small.jpg); cursor: auto; width: 355px; height: 215px; margin-left: 0px; margin-right: 0px; margin-top: 10px;"
 					class="row"></div>
 				<h2 style="color: #FFFFFF; font-family: 微软雅黑;">
 					<font style="border-bottom: #6896EA solid 2px;">经营范围</font>
 				</h2>
 
-					<p>
-						<a>铠装材料</a>&nbsp;<a>热电偶</a>&nbsp;<a>铂电阻</a>
-					</p>
-					<p>
-						<a>补偿导线</a>&nbsp;<a>陶瓷管</a>&nbsp;<a>刚玉管</a>
-					</p>
-					<p>
-						<a>瓷珠</a>&nbsp;<a>热缩管</a>&nbsp;<a>铜接线片</a>
-					</p>
-					<p>
-						<a>热电偶钢管</a>&nbsp;<a>纱包线</a>&nbsp;<a>屏蔽线</a>
-					</p>
-					<p>
-						<a>各种仪表</a>
-					</p>
+				<p>
+					<a>铠装材料</a>&nbsp;<a>热电偶</a>&nbsp;<a>铂电阻</a>
+				</p>
+				<p>
+					<a>补偿导线</a>&nbsp;<a>陶瓷管</a>&nbsp;<a>刚玉管</a>
+				</p>
+				<p>
+					<a>瓷珠</a>&nbsp;<a>热缩管</a>&nbsp;<a>铜接线片</a>
+				</p>
+				<p>
+					<a>热电偶钢管</a>&nbsp;<a>纱包线</a>&nbsp;<a>屏蔽线</a>
+				</p>
+				<p>
+					<a>各种仪表</a>
+				</p>
 			</div>
 		</div>
 
